@@ -1,7 +1,7 @@
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
-import pygame
+import pygame, sys
 from constants import *
 from circleshape import CircleShape
 from player import Player
@@ -39,6 +39,10 @@ def main():
                 return
         
         updatable.update(dt)
+        for asteroid in asteroids:
+            if ply.collides_with(asteroid):
+                print("Game Over!")
+                sys.exit()
         #ply.update(dt)
         
         screen.fill("black")
