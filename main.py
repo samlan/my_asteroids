@@ -42,10 +42,15 @@ def main():
                 return
         
         updatable.update(dt)
+        #ply.shoot_timer -= dt
         for asteroid in asteroids:
             if ply.collides_with(asteroid):
                 print("Game Over!")
                 sys.exit()
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    asteroid.kill()
+                    shot.kill()
         #ply.update(dt)
         
         screen.fill("black")
